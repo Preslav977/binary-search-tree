@@ -1,0 +1,118 @@
+//Pseudo code for binary search tree
+//Binary search tree, is made of couple of components,
+//it has a root, the root points to the left there leafs
+//can have a children's and these children's are two type's
+//in the left subtree you have smaller values
+//in the right subtree you have bigger values
+//this is how balancing works
+
+//BTS has a algorithm that explains how it works
+//1. Initialize an array, with start, which is the beginning
+//of the array 0 index, and end, which is the last index of the array
+//Check if the start index is bigger than the end, if it is return
+//else do the below
+//2. Find the middle point of the array, by dividing the length by 2
+//3. Create the root with that mid point element of the array
+//4. Using recursion do the following:
+//5. Calculate the mid point of the left subarray and make it the root
+//of the left subtree
+//6. Calculate the mid point of the right subarray and make it the root
+//of the right subtree
+
+//BST has the following methods:
+
+//1. Decide between the class/factory for the Node, the class have an attribute
+//for the data (value), that it stores the left and right children these are properties
+//that needs to be null initially
+
+//2. Decide between the class/factory for the Tree, this class accepts an array which
+//is initialized. The class should have a root attribute (property), which uses the return
+//value of the function buildTree, the root is null also.
+
+//3. buildTree is a function, that takes an array for example this one with the elements
+//cost array = [1,7,4,23,8,9,4,3,5,7,9,67,6345,324], this function will build the balanced
+//tree full of node objects appropriately placed.
+//Important: before making the BST algorithm, first this array has to be sorted, and
+//it shouldn't have duplicates elements, maybe using nested for loops to remove the duplicates
+//and using sort method to sort the elements then creating the algorithm ?
+
+//Here is a method prettyPrint(), which will visualize the tree in structured format
+//This function will expect to receive the root of the tree as the value
+//for the node parameter, this is the method below
+
+/*
+const prettyPrint = (node, prefix = "", isLeft = true) => {
+  if (node === null) {
+    return;
+  }
+  if (node.right !== null) {
+    prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+  }
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+  if (node.left !== null) {
+    prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+  }
+};
+*/
+
+//4. Insert and Delete functions which accepts a value to insert or delete
+//Several important cases for Delete: When the node has children or not !
+//If not clear what to do read the additional resources.
+//For insert and delete do not use the original array, you need to traverse
+//the nodes and manipulate them and their connections
+
+//5. find fUnction which accepts a value and return the node with the give value
+//probably tree traversal through the nodes similar maybe to the contains method in the
+//linked lists and returns the value if it's found
+
+//6. levelOrder function which accepts another function as parameter, the function
+//should traverse the tree in BFS and provide each node as argument to the provided
+//function.
+//This call can be implemented using iteration (while/for) maybe loops, and recursively (try to do both)
+//The method should return an array of values, if no function is provided (assuming if not function has been passed as parameter)
+//Tip: You want to use an array acting as a queue (something like using unshift and shift methods only, hmm) to keep track of all the child nodes
+//that you have yet to traverse and to add new ones to the list
+
+//7.Write depth first search algorithms (pre-order, in-order, post-order), functions that accepts a function as parameter.
+//Each of these functions should traverse in their perspective depth-first order and yield each node to the provided
+//function give as argument.
+//The functions should return an array of values if not function is given.
+//These function has to be done using recursion
+//Pre-order, root -> left -> right
+//In-order, left -> root -> right
+//Post-order, left -> right -> root
+
+//8. height function which accepts a node and returns it's height
+//Height is determined as the number of edges in the longest path from
+//a given node to left node
+
+//9. depth function which accepts a node and return it's depth
+//Depth is defined as the number of edges in path from a give
+//node to the tree's root node
+
+//10. isBalanced function that checks if the tree is balanced
+//A balanced tree is one where the difference between heights of left
+//subtree and right subtree of every node is not more than 1
+
+//11. re-balance function which unbalances the tree
+//Tip: You will want to use a traversal method to provide a new array
+//to the buildTree function
+
+//After all methods are implemented and working do the following script:
+//1. Create the binary search tree from an array of random numbers smaller than 100
+//You can create a function that returns an array of random numbers every time you call it
+//if you wish, using the method Math.random(), Math.Floor() * 100, hmm
+
+//2. Confirm the tree is balanced by calling the method isBalanced
+
+//3. Print out all the elements in level order (pre, in, post)
+
+//4. Unbalance the tree by adding numbers greater than 100
+
+//5. Confirm that tree is balanced again by calling isBalanced
+
+//6. Balance the tree by calling re-balance method
+
+//7. Confirm that tree is balanced by calling isBalanced again
+
+//8. Print out all the elements in the level order (pre, in, post)
