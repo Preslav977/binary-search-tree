@@ -30,14 +30,38 @@ class Tree {
       return null;
     }
     const middle = Math.floor(parseInt(start + end) / 2);
-    const newNode = new Node(newArray[middle]);
 
-    newNode.leftChildren = this.buildTree(array, start, middle - 1);
+    const node = new Node(newArray[middle]);
 
-    newNode.rightChildren = this.buildTree(array, middle + 1, end);
+    node.leftChildren = this.buildTree(array, start, middle - 1);
 
-    return newNode;
+    node.rightChildren = this.buildTree(array, middle + 1, end);
+
+    this.root = node;
+
+    return node;
   }
+
+  prettyPrint = (node = this.root, prefix = "", isLeft = true) => {
+    if (node === null) {
+      return;
+    }
+    if (node.rightChildren !== null) {
+      this.prettyPrint(
+        node.rightChildren,
+        `${prefix}${isLeft ? "│   " : "    "}`,
+        false
+      );
+    }
+    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+    if (node.leftChildren !== null) {
+      this.prettyPrint(
+        node.leftChildren,
+        `${prefix}${isLeft ? "    " : "│   "}`,
+        true
+      );
+    }
+  };
 }
 
 export default Tree;
