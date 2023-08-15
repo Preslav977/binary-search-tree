@@ -16,7 +16,7 @@ class Tree {
     this._root = value;
   }
 
-  buildTree(array, start = 0, end = array.length - 1) {
+  buildTree(array, start, end) {
     const newArray = [];
 
     array.sort((smallerValue, biggerValue) => smallerValue - biggerValue);
@@ -33,7 +33,7 @@ class Tree {
 
     const node = new Node(newArray[middle]);
 
-    node.leftChildren = this.buildTree(array, start, middle - 1);
+    node.leftChildren = this.buildTree(newArray, start, middle - 1);
 
     node.rightChildren = this.buildTree(array, middle + 1, end);
 
@@ -62,6 +62,21 @@ class Tree {
       );
     }
   };
+
+  // Don't use the original array that was used to build tree
+  // for insert and delete function parameter
+  // for this method it should traverse the tree and manipulate
+  // their connection
+
+  insert(data) {
+    // if the node value is smaller than the root
+    // maybe do a check if this.root.data is smaller
+    // than the newNode that is going to be a variable
+    // go to the left subtree
+    // else go to the right subtree
+    // For insert and delete do not use the original array, you need to traverse
+    // the nodes and manipulate them and their connections
+  }
 }
 
 export default Tree;

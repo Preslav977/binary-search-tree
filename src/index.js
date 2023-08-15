@@ -1,10 +1,10 @@
 import Tree from "./Tree";
 import "./style.css";
 
-const newTree = new Tree();
+const balancedTree = new Tree();
 
-console.log(
-  newTree.buildTree([1, 7, 4, 11, 8, 9, 4, 3, 5, 7, 9, 25, 64, 17, 75, 70])
-);
+console.log(balancedTree.buildTree([0, 6, 1, 2, 5, 3, 7, 8, 9, 6], 0, 8));
 
-newTree.prettyPrint();
+balancedTree.prettyPrint();
+
+// balancedTree.insert();
