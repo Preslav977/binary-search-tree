@@ -68,6 +68,7 @@ class Tree {
   // for insert and delete function parameter
   // for this method it should traverse the tree and manipulate
   // their connection
+
   insert(data, root = this.root) {
     if (root === null) {
       root = new Node(data);
@@ -79,6 +80,65 @@ class Tree {
       root.rightChildren = this.insert(data, root.rightChildren);
     }
     return root;
+  }
+
+  // eslint-disable-next-line default-param-last
+  delete(data, root = this.root) {
+    if (root === null) {
+      return root;
+    }
+
+    if (root.data > data) {
+      root.leftChildren = this.delete(data, root.leftChildren);
+    } else if (root.data < data) {
+      root.rightChildren = this.delete(data, root.rightChildren);
+      return root;
+    }
+
+    // if one of the children is empty
+    if (root.leftChildren === null) {
+      const temp = root.rightChildren;
+      return temp;
+    }
+    if (root.rightChildren === null) {
+      const temp = root.leftChildren;
+      return temp;
+    }
+
+    let successorParent = root;
+    let successor = root.rightChildren;
+    while (successor.leftChildren !== null) {
+      successorParent = successor;
+      successor = successor.leftChildren;
+    }
+
+    // delete successor since it's always left child of it's parent
+    // we can safely make successor's right, right children as left
+    // of it's parent.
+    // If there are no successor, then assign successor right to
+    // successorParent right
+    if (successorParent !== root) {
+      successorParent.leftChildren = successor.rightChildren;
+    } else {
+      successorParent.rightChildren = successor.rightChildren;
+    }
+    // copy successor data to the root
+    root.data = successor.data;
+    return root;
+  }
+
+  find(data, root = this.root) {
+    if (data < root.data) {
+      const findNode = this.find(data, root.leftChildren);
+      return findNode;
+    }
+    if (data > root.data) {
+      const findNode = this.find(data, root.rightChildren);
+      return findNode;
+    }
+    if (data === root.data) {
+      return root;
+    }
   }
 }
 

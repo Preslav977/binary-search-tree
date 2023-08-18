@@ -14,3 +14,9 @@ balancedTree.prettyPrint();
 console.log(balancedTree.insert(10));
 
 balancedTree.prettyPrint();
+
+console.log(balancedTree.delete(1));
+
+balancedTree.prettyPrint();
+
+console.log(balancedTree.find(8));
