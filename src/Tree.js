@@ -140,6 +140,34 @@ class Tree {
       return root;
     }
   }
+
+  levelOrder(root = this.root) {
+    const traverseNodes = [];
+
+    if (root === null) {
+      return null;
+    }
+
+    const newArray = [...this.array];
+
+    newArray.push(root);
+
+    while (newArray.length !== 0) {
+      const breadthFirstSearch = newArray[0];
+
+      if (breadthFirstSearch.leftChildren !== null) {
+        newArray.push(breadthFirstSearch.leftChildren);
+      }
+      if (breadthFirstSearch.rightChildren !== null) {
+        newArray.push(breadthFirstSearch.rightChildren);
+      }
+
+      newArray.shift(breadthFirstSearch);
+      traverseNodes.push(breadthFirstSearch);
+    }
+
+    return traverseNodes;
+  }
 }
 
 export default Tree;
