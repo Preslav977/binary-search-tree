@@ -168,6 +168,54 @@ class Tree {
 
     return traverseNodes;
   }
+
+  inOrder(root = this.root, newArray = this.array) {
+    if (root === null) {
+      return null;
+    }
+
+    root.leftChildren = this.inOrder(root.leftChildren);
+
+    console.log(root);
+
+    newArray.push(root);
+
+    root.rightChildren = this.inOrder(root.rightChildren);
+
+    return newArray;
+  }
+
+  preOrder(root = this.root, newArray = this.array) {
+    if (root === null) {
+      return null;
+    }
+
+    console.log(root);
+
+    newArray.push(root);
+
+    root.leftChildren = this.preOrder(root.leftChildren);
+
+    root.rightChildren = this.preOrder(root.rightChildren);
+
+    return root;
+  }
+
+  postOrder(root = this.root, newArray = this.array) {
+    if (root === null) {
+      return null;
+    }
+
+    root.leftChildren = this.postOrder(root.leftChildren);
+
+    root.rightChildren = this.postOrder(root.rightChildren);
+
+    console.log(root);
+
+    newArray.push(root);
+
+    return newArray;
+  }
 }
 
 export default Tree;

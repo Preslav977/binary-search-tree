@@ -21,4 +21,10 @@ balancedTree.prettyPrint();
 
 console.log(balancedTree.find(8));
 
-console.log(balancedTree.levelOrder());
+// console.log(balancedTree.levelOrder());
+
+// console.log(balancedTree.inOrder());
+
+// console.log(balancedTree.preOrder());
+
+console.log(balancedTree.postOrder());
