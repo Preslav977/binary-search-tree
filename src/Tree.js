@@ -216,6 +216,28 @@ class Tree {
 
     return newArray;
   }
+
+  height(root = this.root, edge = 0) {
+    if (root === null) {
+      return edge;
+    }
+
+    const countLeftEdges = this.height(root.leftChildren, edge + 1);
+    const countRightEdges = this.height(root.rightChildren, edge + 1);
+
+    if (countLeftEdges > countRightEdges) {
+      return countLeftEdges;
+    }
+    if (countRightEdges > countLeftEdges) {
+      return countRightEdges;
+    }
+    if (countLeftEdges === countRightEdges) {
+      return countLeftEdges;
+    }
+    if (countRightEdges === countLeftEdges) {
+      return countRightEdges;
+    }
+  }
 }
 
 export default Tree;
