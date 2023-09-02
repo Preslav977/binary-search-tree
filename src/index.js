@@ -30,3 +30,5 @@ balancedTree.prettyPrint();
 // console.log(balancedTree.postOrder());
 
 console.log(balancedTree.height(balancedTree.find(10)));
+
+console.log(balancedTree.depth());

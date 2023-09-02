@@ -238,6 +238,20 @@ class Tree {
       return countRightEdges;
     }
   }
+
+  depth(findNode = this.root, edges = 0, compareNode = this.root) {
+    if (findNode.data === compareNode.data) {
+      return edges;
+    }
+
+    if (findNode.data < compareNode.data) {
+      return this.depth(findNode, edges + 1, compareNode.leftChildren);
+    }
+
+    if (findNode.data > compareNode.data) {
+      return this.depth(findNode, edges + 1, compareNode.rightChildren);
+    }
+  }
 }
 
 export default Tree;
