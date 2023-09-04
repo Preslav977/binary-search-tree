@@ -38,3 +38,7 @@ balancedTree.prettyPrint();
 // console.log(balancedTree.depth());
 
 console.log(balancedTree.isBalanced());
+
+console.log(balancedTree.reBalance(0, 12));
+
+balancedTree.prettyPrint();

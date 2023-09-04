@@ -273,6 +273,15 @@ class Tree {
     }
     return false;
   }
+
+  reBalance(start, end) {
+    const isTreeBalanced = this.isBalanced(this.root);
+    if (isTreeBalanced === false) {
+      const newArray = this.levelOrder();
+      console.log(newArray);
+      return this.buildTree(newArray, (start = 0), (end = newArray.length - 1));
+    }
+  }
 }
 
 export default Tree;
