@@ -282,6 +282,24 @@ class Tree {
       return this.buildTree(newArray, (start = 0), (end = newArray.length - 1));
     }
   }
+
+  createRandomNumbers(start, end) {
+    const newArray = [];
+
+    const firstNumber = Math.floor(Math.random() * 100);
+    const secondNumber = Math.floor(Math.random() * 100);
+    const thirdNumber = Math.floor(Math.random() * 100);
+    const fourthNumber = Math.floor(Math.random() * 100);
+    const fifthNumber = Math.floor(Math.random() * 100);
+
+    newArray.push(firstNumber);
+    newArray.push(secondNumber);
+    newArray.push(thirdNumber);
+    newArray.push(fourthNumber);
+    newArray.push(fifthNumber);
+
+    return this.buildTree(newArray, (start = 0), (end = newArray.length - 1));
+  }
 }
 
 export default Tree;
