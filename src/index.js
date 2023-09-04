@@ -13,9 +13,13 @@ balancedTree.prettyPrint();
 
 console.log(balancedTree.insert(10));
 
+console.log(balancedTree.insert(20));
+
+console.log(balancedTree.insert(30));
+
 balancedTree.prettyPrint();
 
-console.log(balancedTree.delete(1));
+// console.log(balancedTree.delete(1));
 
 balancedTree.prettyPrint();
 
@@ -29,6 +33,8 @@ balancedTree.prettyPrint();
 
 // console.log(balancedTree.postOrder());
 
-console.log(balancedTree.height(balancedTree.find(10)));
+// console.log(balancedTree.height(balancedTree.find(6)));
 
-console.log(balancedTree.depth());
+// console.log(balancedTree.depth());
+
+console.log(balancedTree.isBalanced());

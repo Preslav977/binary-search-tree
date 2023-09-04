@@ -163,7 +163,7 @@ class Tree {
       }
 
       newArray.shift(breadthFirstSearch);
-      traverseNodes.push(breadthFirstSearch);
+      traverseNodes.push(breadthFirstSearch.data);
     }
 
     return traverseNodes;
@@ -176,9 +176,9 @@ class Tree {
 
     root.leftChildren = this.inOrder(root.leftChildren);
 
-    console.log(root);
+    // console.log(root);
 
-    newArray.push(root);
+    newArray.push(root.data);
 
     root.rightChildren = this.inOrder(root.rightChildren);
 
@@ -190,15 +190,15 @@ class Tree {
       return null;
     }
 
-    console.log(root);
+    // console.log(root);
 
-    newArray.push(root);
+    newArray.push(root.data);
 
     root.leftChildren = this.preOrder(root.leftChildren);
 
     root.rightChildren = this.preOrder(root.rightChildren);
 
-    return root;
+    return newArray;
   }
 
   postOrder(root = this.root, newArray = this.array) {
@@ -210,9 +210,9 @@ class Tree {
 
     root.rightChildren = this.postOrder(root.rightChildren);
 
-    console.log(root);
+    // console.log(root);
 
-    newArray.push(root);
+    newArray.push(root.data);
 
     return newArray;
   }
@@ -251,6 +251,27 @@ class Tree {
     if (findNode.data > compareNode.data) {
       return this.depth(findNode, edges + 1, compareNode.rightChildren);
     }
+  }
+
+  isBalanced(root = this.root) {
+    if (root === null) {
+      return 0;
+    }
+
+    const leftSubtreeHeight = this.height(root.leftChildren);
+    const rightSubtreeHeight = this.height(root.rightChildren);
+
+    const leftTreeHeight = leftSubtreeHeight - rightSubtreeHeight;
+
+    const rightTreeHeight = rightSubtreeHeight - leftSubtreeHeight;
+
+    if (
+      (leftTreeHeight <= 0 && leftTreeHeight >= 0) ||
+      (rightTreeHeight <= 1 && rightTreeHeight >= 0)
+    ) {
+      return true;
+    }
+    return false;
   }
 }
 
